@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +17,7 @@ class ApplicationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: _router,
-      theme: ThemeData(),
+      theme: ThemeData.dark(),
     );
   }
 
@@ -33,7 +34,10 @@ class ApplicationWidget extends StatelessWidget {
         path: AppRoutInfo.healthScreen.path,
         name: AppRoutInfo.healthScreen.name,
         builder: (context, state) {
-          return const HealthScreen();
+          return BlocProvider<HealthBloc>(
+            create: (BuildContext context) => HealthBloc(),
+            child: const HealthScreen(),
+          );
         },
       ),
     ]);
