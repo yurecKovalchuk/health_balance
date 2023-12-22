@@ -1,15 +1,20 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+
+import 'package:hive_flutter/adapters.dart';
 import 'package:logging/logging.dart';
+
+import 'models/models.dart';
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async =>
     runZonedGuarded(() async => _initialize(kDebugMode, builder), _handleError);
 
 void _initialize(bool isDebugMode, FutureOr<Widget> Function() builder) async {
   _initLogger(isDebugMode);
-
+  await Hive.initFlutter();
+   Hive.registerAdapter(HealthBalanceModelAdapter());
   return runApp(await builder());
 }
 
