@@ -17,4 +17,8 @@ abstract class AppRoutInfo {
     name: 'health_screen',
     path: '/health',
   );
+  static const graphHealthScreen = RouteData(
+    name: 'graph_health_screen',
+    path: '/graph_health',
+  );
 }

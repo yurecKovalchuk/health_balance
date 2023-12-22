@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:health_balance/data/data.dart';
 import '../../../models/models.dart';
 
 part 'health_state.dart';
@@ -9,7 +10,22 @@ part 'health_state.dart';
 part 'health_bloc.freezed.dart';
 
 class HealthBloc extends Cubit<HealthState> {
-  HealthBloc() : super(HealthState(healthBalanceModel: HealthBalanceModel.defaultValues()));
+  HealthBloc(
+    this._healthRepository,
+  ) : super(HealthState(
+          healthBalanceModel: HealthBalanceModel.defaultValues(),
+        ));
+  final HealthRepository _healthRepository;
+
+  void saveHealthBalance(HealthBalanceModel healthBalanceModel) async {
+    emit(state.copyWith(status: HealthStatus.loading));
+    try {
+      await _healthRepository.saveHealthBalance(healthBalanceModel);
+      emit(state.copyWith(status: HealthStatus.success));
+    } catch (e) {
+      emit(state.copyWith(status: HealthStatus.error));
+    }
+  }
 
   void updateValues(double valueBody, double valueMind, double valueSpirit) {
     double total = 100.0;
