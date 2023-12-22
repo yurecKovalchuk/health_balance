@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:health_balance/data/data.dart';
 
 import '../features/features.dart';
 import 'app.dart';
@@ -12,6 +13,7 @@ class ApplicationWidget extends StatelessWidget {
   });
 
   late final GoRouter _router = _buildRouting();
+  final _healthRepository = HealthRepository(HiveData());
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +37,22 @@ class ApplicationWidget extends StatelessWidget {
         name: AppRoutInfo.healthScreen.name,
         builder: (context, state) {
           return BlocProvider<HealthBloc>(
-            create: (BuildContext context) => HealthBloc(),
+            create: (BuildContext context) => HealthBloc(
+              _healthRepository,
+            ),
             child: const HealthScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutInfo.graphHealthScreen.path,
+        name: AppRoutInfo.graphHealthScreen.name,
+        builder: (context, state) {
+          return BlocProvider<GraphHealthBloc>(
+            create: (BuildContext context) => GraphHealthBloc(
+              _healthRepository,
+            ),
+            child: const GraphHealthScreen(),
           );
         },
       ),

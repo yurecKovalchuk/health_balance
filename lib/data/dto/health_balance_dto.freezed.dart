@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'health_balance_model.dart';
+part of 'health_balance_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,48 +14,44 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-HealthBalanceModel _$HealthBalanceModelFromJson(Map<String, dynamic> json) {
-  return _HealthBalanceModel.fromJson(json);
+HealthBalanceDTO _$HealthBalanceDTOFromJson(Map<String, dynamic> json) {
+  return _HealthBalanceDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$HealthBalanceModel {
+mixin _$HealthBalanceDTO {
   @JsonKey(name: 'calendarDay')
-  @HiveField(1)
   DateTime? get calendarDay => throw _privateConstructorUsedError;
   @JsonKey(name: 'body')
-  @HiveField(2)
   double? get body => throw _privateConstructorUsedError;
   @JsonKey(name: 'mind')
-  @HiveField(3)
   double? get mind => throw _privateConstructorUsedError;
   @JsonKey(name: 'spirit')
-  @HiveField(4)
   double? get spirit => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $HealthBalanceModelCopyWith<HealthBalanceModel> get copyWith =>
+  $HealthBalanceDTOCopyWith<HealthBalanceDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HealthBalanceModelCopyWith<$Res> {
-  factory $HealthBalanceModelCopyWith(
-          HealthBalanceModel value, $Res Function(HealthBalanceModel) then) =
-      _$HealthBalanceModelCopyWithImpl<$Res, HealthBalanceModel>;
+abstract class $HealthBalanceDTOCopyWith<$Res> {
+  factory $HealthBalanceDTOCopyWith(
+          HealthBalanceDTO value, $Res Function(HealthBalanceDTO) then) =
+      _$HealthBalanceDTOCopyWithImpl<$Res, HealthBalanceDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'calendarDay') @HiveField(1) DateTime? calendarDay,
-      @JsonKey(name: 'body') @HiveField(2) double? body,
-      @JsonKey(name: 'mind') @HiveField(3) double? mind,
-      @JsonKey(name: 'spirit') @HiveField(4) double? spirit});
+      {@JsonKey(name: 'calendarDay') DateTime? calendarDay,
+      @JsonKey(name: 'body') double? body,
+      @JsonKey(name: 'mind') double? mind,
+      @JsonKey(name: 'spirit') double? spirit});
 }
 
 /// @nodoc
-class _$HealthBalanceModelCopyWithImpl<$Res, $Val extends HealthBalanceModel>
-    implements $HealthBalanceModelCopyWith<$Res> {
-  _$HealthBalanceModelCopyWithImpl(this._value, this._then);
+class _$HealthBalanceDTOCopyWithImpl<$Res, $Val extends HealthBalanceDTO>
+    implements $HealthBalanceDTOCopyWith<$Res> {
+  _$HealthBalanceDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -92,26 +88,26 @@ class _$HealthBalanceModelCopyWithImpl<$Res, $Val extends HealthBalanceModel>
 }
 
 /// @nodoc
-abstract class _$$HealthBalanceModelImplCopyWith<$Res>
-    implements $HealthBalanceModelCopyWith<$Res> {
-  factory _$$HealthBalanceModelImplCopyWith(_$HealthBalanceModelImpl value,
-          $Res Function(_$HealthBalanceModelImpl) then) =
-      __$$HealthBalanceModelImplCopyWithImpl<$Res>;
+abstract class _$$HealthBalanceDTOImplCopyWith<$Res>
+    implements $HealthBalanceDTOCopyWith<$Res> {
+  factory _$$HealthBalanceDTOImplCopyWith(_$HealthBalanceDTOImpl value,
+          $Res Function(_$HealthBalanceDTOImpl) then) =
+      __$$HealthBalanceDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'calendarDay') @HiveField(1) DateTime? calendarDay,
-      @JsonKey(name: 'body') @HiveField(2) double? body,
-      @JsonKey(name: 'mind') @HiveField(3) double? mind,
-      @JsonKey(name: 'spirit') @HiveField(4) double? spirit});
+      {@JsonKey(name: 'calendarDay') DateTime? calendarDay,
+      @JsonKey(name: 'body') double? body,
+      @JsonKey(name: 'mind') double? mind,
+      @JsonKey(name: 'spirit') double? spirit});
 }
 
 /// @nodoc
-class __$$HealthBalanceModelImplCopyWithImpl<$Res>
-    extends _$HealthBalanceModelCopyWithImpl<$Res, _$HealthBalanceModelImpl>
-    implements _$$HealthBalanceModelImplCopyWith<$Res> {
-  __$$HealthBalanceModelImplCopyWithImpl(_$HealthBalanceModelImpl _value,
-      $Res Function(_$HealthBalanceModelImpl) _then)
+class __$$HealthBalanceDTOImplCopyWithImpl<$Res>
+    extends _$HealthBalanceDTOCopyWithImpl<$Res, _$HealthBalanceDTOImpl>
+    implements _$$HealthBalanceDTOImplCopyWith<$Res> {
+  __$$HealthBalanceDTOImplCopyWithImpl(_$HealthBalanceDTOImpl _value,
+      $Res Function(_$HealthBalanceDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +118,7 @@ class __$$HealthBalanceModelImplCopyWithImpl<$Res>
     Object? mind = freezed,
     Object? spirit = freezed,
   }) {
-    return _then(_$HealthBalanceModelImpl(
+    return _then(_$HealthBalanceDTOImpl(
       calendarDay: freezed == calendarDay
           ? _value.calendarDay
           : calendarDay // ignore: cast_nullable_to_non_nullable
@@ -145,44 +141,39 @@ class __$$HealthBalanceModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@HiveField(0)
-class _$HealthBalanceModelImpl implements _HealthBalanceModel {
-  const _$HealthBalanceModelImpl(
-      {@JsonKey(name: 'calendarDay') @HiveField(1) this.calendarDay,
-      @JsonKey(name: 'body') @HiveField(2) this.body,
-      @JsonKey(name: 'mind') @HiveField(3) this.mind,
-      @JsonKey(name: 'spirit') @HiveField(4) this.spirit});
+class _$HealthBalanceDTOImpl implements _HealthBalanceDTO {
+  const _$HealthBalanceDTOImpl(
+      {@JsonKey(name: 'calendarDay') this.calendarDay,
+      @JsonKey(name: 'body') this.body,
+      @JsonKey(name: 'mind') this.mind,
+      @JsonKey(name: 'spirit') this.spirit});
 
-  factory _$HealthBalanceModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$HealthBalanceModelImplFromJson(json);
+  factory _$HealthBalanceDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HealthBalanceDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'calendarDay')
-  @HiveField(1)
   final DateTime? calendarDay;
   @override
   @JsonKey(name: 'body')
-  @HiveField(2)
   final double? body;
   @override
   @JsonKey(name: 'mind')
-  @HiveField(3)
   final double? mind;
   @override
   @JsonKey(name: 'spirit')
-  @HiveField(4)
   final double? spirit;
 
   @override
   String toString() {
-    return 'HealthBalanceModel(calendarDay: $calendarDay, body: $body, mind: $mind, spirit: $spirit)';
+    return 'HealthBalanceDTO(calendarDay: $calendarDay, body: $body, mind: $mind, spirit: $spirit)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HealthBalanceModelImpl &&
+            other is _$HealthBalanceDTOImpl &&
             (identical(other.calendarDay, calendarDay) ||
                 other.calendarDay == calendarDay) &&
             (identical(other.body, body) || other.body == body) &&
@@ -197,48 +188,42 @@ class _$HealthBalanceModelImpl implements _HealthBalanceModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HealthBalanceModelImplCopyWith<_$HealthBalanceModelImpl> get copyWith =>
-      __$$HealthBalanceModelImplCopyWithImpl<_$HealthBalanceModelImpl>(
+  _$$HealthBalanceDTOImplCopyWith<_$HealthBalanceDTOImpl> get copyWith =>
+      __$$HealthBalanceDTOImplCopyWithImpl<_$HealthBalanceDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HealthBalanceModelImplToJson(
+    return _$$HealthBalanceDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _HealthBalanceModel implements HealthBalanceModel {
-  const factory _HealthBalanceModel(
-      {@JsonKey(name: 'calendarDay') @HiveField(1) final DateTime? calendarDay,
-      @JsonKey(name: 'body') @HiveField(2) final double? body,
-      @JsonKey(name: 'mind') @HiveField(3) final double? mind,
-      @JsonKey(name: 'spirit')
-      @HiveField(4)
-      final double? spirit}) = _$HealthBalanceModelImpl;
+abstract class _HealthBalanceDTO implements HealthBalanceDTO {
+  const factory _HealthBalanceDTO(
+      {@JsonKey(name: 'calendarDay') final DateTime? calendarDay,
+      @JsonKey(name: 'body') final double? body,
+      @JsonKey(name: 'mind') final double? mind,
+      @JsonKey(name: 'spirit') final double? spirit}) = _$HealthBalanceDTOImpl;
 
-  factory _HealthBalanceModel.fromJson(Map<String, dynamic> json) =
-      _$HealthBalanceModelImpl.fromJson;
+  factory _HealthBalanceDTO.fromJson(Map<String, dynamic> json) =
+      _$HealthBalanceDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'calendarDay')
-  @HiveField(1)
   DateTime? get calendarDay;
   @override
   @JsonKey(name: 'body')
-  @HiveField(2)
   double? get body;
   @override
   @JsonKey(name: 'mind')
-  @HiveField(3)
   double? get mind;
   @override
   @JsonKey(name: 'spirit')
-  @HiveField(4)
   double? get spirit;
   @override
   @JsonKey(ignore: true)
-  _$$HealthBalanceModelImplCopyWith<_$HealthBalanceModelImpl> get copyWith =>
+  _$$HealthBalanceDTOImplCopyWith<_$HealthBalanceDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

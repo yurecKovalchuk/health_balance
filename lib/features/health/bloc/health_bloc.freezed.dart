@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HealthState {
+  HealthStatus get status => throw _privateConstructorUsedError;
   HealthBalanceModel get healthBalanceModel =>
       throw _privateConstructorUsedError;
 
@@ -30,7 +31,7 @@ abstract class $HealthStateCopyWith<$Res> {
           HealthState value, $Res Function(HealthState) then) =
       _$HealthStateCopyWithImpl<$Res, HealthState>;
   @useResult
-  $Res call({HealthBalanceModel healthBalanceModel});
+  $Res call({HealthStatus status, HealthBalanceModel healthBalanceModel});
 
   $HealthBalanceModelCopyWith<$Res> get healthBalanceModel;
 }
@@ -48,9 +49,14 @@ class _$HealthStateCopyWithImpl<$Res, $Val extends HealthState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = null,
     Object? healthBalanceModel = null,
   }) {
     return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as HealthStatus,
       healthBalanceModel: null == healthBalanceModel
           ? _value.healthBalanceModel
           : healthBalanceModel // ignore: cast_nullable_to_non_nullable
@@ -76,7 +82,7 @@ abstract class _$$HealthStateImplCopyWith<$Res>
       __$$HealthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({HealthBalanceModel healthBalanceModel});
+  $Res call({HealthStatus status, HealthBalanceModel healthBalanceModel});
 
   @override
   $HealthBalanceModelCopyWith<$Res> get healthBalanceModel;
@@ -93,9 +99,14 @@ class __$$HealthStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = null,
     Object? healthBalanceModel = null,
   }) {
     return _then(_$HealthStateImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as HealthStatus,
       healthBalanceModel: null == healthBalanceModel
           ? _value.healthBalanceModel
           : healthBalanceModel // ignore: cast_nullable_to_non_nullable
@@ -107,14 +118,18 @@ class __$$HealthStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HealthStateImpl implements _HealthState {
-  const _$HealthStateImpl({required this.healthBalanceModel});
+  const _$HealthStateImpl(
+      {this.status = HealthStatus.initial, required this.healthBalanceModel});
 
+  @override
+  @JsonKey()
+  final HealthStatus status;
   @override
   final HealthBalanceModel healthBalanceModel;
 
   @override
   String toString() {
-    return 'HealthState(healthBalanceModel: $healthBalanceModel)';
+    return 'HealthState(status: $status, healthBalanceModel: $healthBalanceModel)';
   }
 
   @override
@@ -122,12 +137,13 @@ class _$HealthStateImpl implements _HealthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HealthStateImpl &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.healthBalanceModel, healthBalanceModel) ||
                 other.healthBalanceModel == healthBalanceModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, healthBalanceModel);
+  int get hashCode => Object.hash(runtimeType, status, healthBalanceModel);
 
   @JsonKey(ignore: true)
   @override
@@ -138,9 +154,12 @@ class _$HealthStateImpl implements _HealthState {
 
 abstract class _HealthState implements HealthState {
   const factory _HealthState(
-          {required final HealthBalanceModel healthBalanceModel}) =
+          {final HealthStatus status,
+          required final HealthBalanceModel healthBalanceModel}) =
       _$HealthStateImpl;
 
+  @override
+  HealthStatus get status;
   @override
   HealthBalanceModel get healthBalanceModel;
   @override

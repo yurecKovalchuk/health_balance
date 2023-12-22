@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:go_router/go_router.dart';
+
+import 'package:health_balance/app/app.dart';
 import 'package:health_balance/features/features.dart';
 
 class HealthScreen extends StatefulWidget {
@@ -14,13 +17,16 @@ class HealthScreen extends StatefulWidget {
 class _HealthScreenState extends State<HealthScreen> {
   HealthBloc get _bloc => BlocProvider.of<HealthBloc>(context);
 
+  // final GlobalKey<ScaffoldMessengerState> _scaffoldKey = GlobalKey<ScaffoldMessengerState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //key: _scaffoldKey,
       body: BlocConsumer<HealthBloc, HealthState>(
         builder: (context, state) {
           return Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 36),
             child: Column(
               children: [
                 Row(
@@ -33,6 +39,7 @@ class _HealthScreenState extends State<HealthScreen> {
                     ),
                     const Spacer(),
                     InkWell(
+                      onTap: () => context.go(AppRoutInfo.graphHealthScreen.path),
                       child: Row(
                         children: [
                           Text(
@@ -71,19 +78,28 @@ class _HealthScreenState extends State<HealthScreen> {
                             const SizedBox(
                               width: 8,
                             ),
-                            Text("Body: ${state.healthBalanceModel.body?.toStringAsFixed(1)} %"),
+                            Text(
+                              "Body: ${state.healthBalanceModel.body?.toStringAsFixed(1)} %",
+                              style: const TextStyle(fontSize: 12),
+                            ),
                             const Spacer(),
                             const Icon(Icons.circle, color: Colors.deepPurple, size: 8),
                             const SizedBox(
                               width: 8,
                             ),
-                            Text("Body: ${state.healthBalanceModel.mind?.toStringAsFixed(1)} %"),
+                            Text(
+                              "Mind: ${state.healthBalanceModel.mind?.toStringAsFixed(1)} %",
+                              style: const TextStyle(fontSize: 12),
+                            ),
                             const Spacer(),
                             const Icon(Icons.circle, color: Colors.blue, size: 8),
                             const SizedBox(
                               width: 8,
                             ),
-                            Text("Body: ${state.healthBalanceModel.spirit?.toStringAsFixed(1)} %"),
+                            Text(
+                              "Spirit: ${state.healthBalanceModel.spirit?.toStringAsFixed(1)} %",
+                              style: const TextStyle(fontSize: 12),
+                            ),
                           ],
                         ),
                       ),
@@ -180,6 +196,16 @@ class _HealthScreenState extends State<HealthScreen> {
                               state.healthBalanceModel.mind!.toDouble(), value);
                         },
                       ),
+                      const SizedBox(
+                        height: 48,
+                      ),
+                      ElevatedButton(
+                        onPressed: () => _bloc.saveHealthBalance(state.healthBalanceModel),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(62.0),
+                        ),
+                        child: const Text('Save'),
+                      ),
                     ],
                   ),
                 ),
@@ -187,7 +213,22 @@ class _HealthScreenState extends State<HealthScreen> {
             ),
           );
         },
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state.status == HealthStatus.success) {
+            const snackBar = SnackBar(
+              content: Text('Successfully saved'),
+              backgroundColor: Colors.green,
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          }
+          if (state.status == HealthStatus.error) {
+            const snackBar = SnackBar(
+              content: Text('Something wrong'),
+              backgroundColor: Colors.red,
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          }
+        },
       ),
     );
   }
