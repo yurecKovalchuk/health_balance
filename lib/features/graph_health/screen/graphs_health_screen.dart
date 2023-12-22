@@ -82,14 +82,12 @@ class _GraphHealthScreenState extends State<GraphHealthScreen> {
             );
           },
           listener: (context, state) {
-            if(state.healthBalanceDTO != null){
+            if (state.healthBalanceDTO != null) {
               dataMap = _bloc.averageValueToMap();
             }
           },
         ),
       ),
     );
-
   }
-
 }
