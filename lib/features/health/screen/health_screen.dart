@@ -17,12 +17,9 @@ class HealthScreen extends StatefulWidget {
 class _HealthScreenState extends State<HealthScreen> {
   HealthBloc get _bloc => BlocProvider.of<HealthBloc>(context);
 
-  // final GlobalKey<ScaffoldMessengerState> _scaffoldKey = GlobalKey<ScaffoldMessengerState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //key: _scaffoldKey,
       body: BlocConsumer<HealthBloc, HealthState>(
         builder: (context, state) {
           return Padding(
